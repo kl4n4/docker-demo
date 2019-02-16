@@ -3,7 +3,7 @@ import { getArticles } from './NewsAPI';
 
 const server = restify.createServer({
   name: 'docker-demo',
-  version: '0.1.0',
+  version: '0.2.0',
 });
 
 server.get('/', async (req, res, next) => {
