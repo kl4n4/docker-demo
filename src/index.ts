@@ -3,13 +3,14 @@ import { getArticles } from './NewsAPI';
 
 const server = restify.createServer({
   name: 'docker-demo',
-  version: '0.3.0',
+  version: '0.4.0',
 });
 
 server.get('/', async (req, res, next) => {
+  const username = req.header('X-Consumer-Username', 'unknown');
   res.send(200, {
-    message: `Hello! This is updatemi/docker-demo`,
-    articles: await getArticles(process.env.API_KEY3),
+    message: `Hello ${username}! This is updatemi/docker-demo`,
+    articles: await getArticles(process.env.API_KEY),
   });
   next();
 });
