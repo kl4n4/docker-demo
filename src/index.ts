@@ -9,7 +9,7 @@ const server = restify.createServer({
 server.get('/', async (req, res, next) => {
   res.send(200, {
     message: `Hello! This is updatemi/docker-demo`,
-    articles: await getArticles(process.env.API_KEY3),
+    articles: await getArticles(process.env.API_KEY),
   });
   next();
 });
