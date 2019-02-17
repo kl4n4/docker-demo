@@ -9,7 +9,9 @@ RUN npm install
 
 COPY src/ /usr/src/app/src
 
-RUN npm run-script build
+RUN npm run-script build && \
+    rm -rf node_modules/ && \
+    npm install --production
 
 
 # web container

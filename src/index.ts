@@ -4,14 +4,14 @@ import { getArticles } from './NewsAPI';
 
 const server = restify.createServer({
   name: 'docker-demo',
-  version: '0.5.0',
+  version: '0.6.0',
 });
 
 server.get('/', async (req, res, next) => {
   const username = req.header('X-Consumer-Username', 'unknown');
   res.send(200, {
     message: `Hello ${username}! This is updatemi/docker-demo`,
-    articles: await getArticles(fs.readFileSync(process.env.API_SECRET).toString()),
+    articles: await getArticles(process.env.API_SECRET ? fs.readFileSync(process.env.API_SECRET).toString() : process.env.API_KEY),
   });
   next();
 });
